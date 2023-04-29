@@ -3,14 +3,19 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Sanctum\NewAccessToken;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, HasUuid, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +23,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -41,4 +47,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Create a new personal access token for the user.
+     *
+     * @param string $name token name
+     * @param array<int, string> $abilities token abilities
+     * @return NewAccessToken Object
+     */
+    public function createToken(string $name, array $abilities = ['*']): NewAccessToken
+    {
+        /** @var PersonalAccessToken $token */
+        $token = $this->tokens()->create([
+            'name' => $name,
+            'token' => hash('sha256', $plainTextToken = Str::random(40)),
+            'abilities' => $abilities,
+            'expires_at' => now()->addMinutes(config('sanctum.expiration')),
+        ]);
+
+        return new NewAccessToken($token, $token->getKey().'|'.$plainTextToken);
+    }
+
+    /**
+     * Get User UUID
+     *
+     * @return string user uuid
+     */
+    public function getUuid(): string
+    {
+        return $this->uuid;
+    }
 }

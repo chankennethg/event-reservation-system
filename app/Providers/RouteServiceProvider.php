@@ -20,6 +20,13 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME = '/home';
 
     /**
+     * Api Namespace
+     *
+     * @var string
+     */
+    protected string $apiNamespace = 'App\Http\Controllers\Api';
+
+    /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
     public function boot(): void
@@ -29,12 +36,15 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->routes(function () {
-            Route::middleware('api')
-                ->prefix('api')
-                ->group(base_path('routes/api.php'));
+            Route::prefix('api/v1/auth')
+            ->middleware('api')
+            ->namespace($this->apiNamespace.'\\V1')
+            ->group(base_path('routes/api/v1/auth.php'));
 
-            Route::middleware('web')
-                ->group(base_path('routes/web.php'));
+            Route::prefix('api/v1/events')
+            ->middleware(['api', 'auth:sanctum'])
+            ->namespace($this->apiNamespace.'\\V1')
+            ->group(base_path('routes/api/v1/events.php'));
         });
     }
 }
