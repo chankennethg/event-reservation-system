@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 /**
  * ----------------------------------------
  * Guest routes
+ * Prefix /auth
  * ----------------------------------------
  */
 
