@@ -31,9 +31,9 @@ class EventTest extends TestCase
         );
 
         $dateFormat = 'Y-m-d H:i:s';
-        $startsAt = fake()->dateTimeBetween('-3 months', '+3 months')->format($dateFormat);
-        $endsAt = fake()->dateTimeBetween($startsAt, '+3 months')->format($dateFormat);
-        $reservationStartsAt = fake()->dateTimeBetween('-3 months', $startsAt)->format($dateFormat);
+        $startsAt = fake()->dateTimeBetween('+7 days', '+8 days')->format($dateFormat);
+        $endsAt = fake()->dateTimeBetween($startsAt, '+10 days')->format($dateFormat);
+        $reservationStartsAt = fake()->dateTimeBetween('-1 months', $startsAt)->format($dateFormat);
         $reservationEndsAt = fake()->dateTimeBetween($reservationStartsAt, $startsAt)->format($dateFormat);
 
         $payload = [

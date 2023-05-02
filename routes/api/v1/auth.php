@@ -11,6 +11,5 @@ use Illuminate\Support\Facades\Route;
  * ----------------------------------------
  */
 
-/** Public Admin routes */
 Route::post('login', [LoginController::class, 'login']);
 Route::post('register', [RegisterUserController::class, 'store']);

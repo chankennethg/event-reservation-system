@@ -30,7 +30,7 @@ class EventFactory extends Factory
             'description' => fake()->paragraph(rand(10,100)),
             'location' => fake()->address(),
             'price' => fake()->randomFloat(2, 1, 8),
-            'attendee_limit' => fake()->boolean(50) ? fake()->numberBetween() : null,
+            'attendee_limit' => fake()->boolean(80) ? fake()->numberBetween() : null,
             'starts_at' => $startsAt,
             'ends_at' => $endsAt,
             'reservation_starts_at' => $reservationStartsAt,

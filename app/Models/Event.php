@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @implements ListableContract<Event>
@@ -105,7 +106,17 @@ class Event extends Model implements ListableContract
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_uuid', 'uuid');
+    }
+
+    /**
+     * Event has many Tickets relationship
+     *
+     * @return HasMany Eloquent Relationship
+     */
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(Ticket::class, 'event_uuid', 'uuid');
     }
 
     /**

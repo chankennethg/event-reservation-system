@@ -76,7 +76,17 @@ class User extends Authenticatable
      */
     public function events(): HasMany
     {
-        return $this->hasMany(Event::class, 'user_uuid');
+        return $this->hasMany(Event::class, 'user_uuid', 'uuid');
+    }
+
+    /**
+     * User Has Many Tickets Relationship
+     *
+     * @return HasMany Eloquent Relationship
+     */
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(Ticket::class, 'user_uuid', 'uuid');
     }
 
     /**

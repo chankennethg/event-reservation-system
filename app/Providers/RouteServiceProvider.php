@@ -45,6 +45,11 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware(['api', 'auth:sanctum'])
             ->namespace($this->apiNamespace.'\\V1')
             ->group(base_path('routes/api/v1/events.php'));
+
+            Route::prefix('api/v1/tickets')
+            ->middleware(['api', 'auth:sanctum'])
+            ->namespace($this->apiNamespace.'\\V1')
+            ->group(base_path('routes/api/v1/tickets.php'));
         });
     }
 }
