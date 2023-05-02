@@ -25,6 +25,7 @@ class ListEventResource extends JsonResource
             'location' => $this->location,
             'price' => $this->price,
             'attendee_limit' => $this->attendee_limit,
+            'ticket_count' => $this->whenCounted('tickets'),
             'starts_at' => $this->starts_at,
             'ends_at' => $this->ends_at,
             'reservation_starts_at' => $this->reservation_starts_at,
