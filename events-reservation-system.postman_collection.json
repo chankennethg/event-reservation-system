@@ -1,0 +1,1293 @@
+{
+	"info": {
+		"_postman_id": "24cfb883-509d-4cbe-88db-75291a38d3cd",
+		"name": "events-reservation-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3222700"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"default@app.dev\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "[200] OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"default@app.dev\",\r\n    \"password\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 20 Apr 2023 14:24:20 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"uuid\": \"7eebef3a-0243-3119-b9af-a6d1e2bf8fe2\",\n        \"email\": \"admin@store.dev\",\n        \"first_name\": \"Admin\",\n        \"last_name\": \"User\",\n        \"token\": \"14|7FJOscgU3mBxKfu5WAUiNyaQAQ1ThonI58LDP1WE\"\n    }\n}"
+						},
+						{
+							"name": "[401] Invalid Username or Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"default@app.dev\",\r\n    \"password\": \"badpassword\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 29 Apr 2023 12:37:29 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "50"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid Username or Password.\"\n}"
+						},
+						{
+							"name": "[422] Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 29 Apr 2023 12:37:49 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The email field is required. (and 1 more error)\",\n    \"errors\": {\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"password\": [\n            \"The password field is required.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sample@gmail.com\",\r\n    \"first_name\": \"Kobe\",\r\n    \"last_name\": \"Bryant\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "[201] Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"sample@gmail.com\",\r\n    \"first_name\": \"Kobe\",\r\n    \"last_name\": \"Bryant\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 May 2023 20:16:19 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"uuid\": \"9914c5db-b114-441a-b9fe-61186189f40b\",\n        \"email\": \"sample@gmail.com\",\n        \"first_name\": \"Kobe\",\n        \"last_name\": \"Bryant\",\n        \"token\": \"5|DU05tOvKhtcWNYekuCDluMT5Zlmh0LElEB9y7nKj\",\n        \"updated_at\": \"2023-05-03T20:16:19.000000Z\",\n        \"created_at\": \"2023-05-03T20:16:19.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "[422] Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"\",\r\n    \"first_name\": \"\",\r\n    \"last_name\": \"\",\r\n    \"password\": \"\",\r\n    \"password_confirmation\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 May 2023 20:16:01 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The given data was invalid.\",\n    \"errors\": {\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"first_name\": [\n            \"The first name field is required.\"\n        ],\n        \"last_name\": [\n            \"The last name field is required.\"\n        ],\n        \"password\": [\n            \"The password field is required.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "[422] Email already taken",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"sample@gmail.com\",\r\n    \"first_name\": \"Kobe\",\r\n    \"last_name\": \"Bryant\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 May 2023 20:16:32 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The given data was invalid.\",\n    \"errors\": {\n        \"email\": [\n            \"The email has already been taken.\"\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "List Event",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"list"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "created_at",
+									"description": "Sort by column",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "desc",
+									"description": "Sort Direction (asc,desc)",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "3",
+									"description": "Page number",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Item per page",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "",
+									"description": "Filter by Event Title",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "",
+									"description": "Filter by Event Description",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "available",
+									"description": "Event status. One of inactive or available\n\ninactive: Events that is not starting yet or reservation is not ongoing\navailable: Events that is available for Reservation to the user",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "[200] OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/events/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"list"
+									],
+									"query": [
+										{
+											"key": "sort_by",
+											"value": "created_at",
+											"description": "Sort by column",
+											"disabled": true
+										},
+										{
+											"key": "direction",
+											"value": "desc",
+											"description": "Sort Direction (asc,desc)",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"description": "Page number",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "10",
+											"description": "Item per page",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "",
+											"description": "Filter by Event Title",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "",
+											"description": "Filter by Event Description",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "reserve",
+											"description": "Event status. One of inactive or reserve\n\nInactive: Events that is not starting yet or reservation is not ongoing\nReserve: Reservation is open and ongoing",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 30 Apr 2023 18:38:50 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"uuid\": \"990e99eb-f39f-4ca8-aa58-239b813ab81c\",\n            \"user_uuid\": \"fb8522ba-fe34-358d-8a8d-9ffb612125d7\",\n            \"title\": \"Sample Title\",\n            \"description\": \"Sunt velit repellendus distinctio fuga. Consequatur omnis pariatur tenetur cumque quae. Eaque aut repellat rem mollitia est asperiores. Neque earum debitis eius.\",\n            \"location\": \"700 8th St Clanton, Alabama(AL), 35045\",\n            \"price\": \"50.00\",\n            \"attendee_limit\": 100,\n            \"starts_at\": \"2023-04-30 12:00:00\",\n            \"ends_at\": \"2023-05-01 15:00:00\",\n            \"reservation_starts_at\": \"2023-04-01 12:00:00\",\n            \"reservation_ends_at\": \"2023-04-20 12:00:00\",\n            \"created_at\": \"2023-04-30T18:38:29.000000Z\",\n            \"updated_at\": \"2023-04-30T18:38:29.000000Z\"\n        },\n        {\n            \"uuid\": \"990e7337-32dd-4992-8654-5c5113312b4a\",\n            \"user_uuid\": \"fb8522ba-fe34-358d-8a8d-9ffb612125d7\",\n            \"title\": \"Sample Title\",\n            \"description\": \"Sunt velit repellendus distinctio fuga. Consequatur omnis pariatur tenetur cumque quae. Eaque aut repellat rem mollitia est asperiores. Neque earum debitis eius.\",\n            \"location\": \"700 8th St Clanton, Alabama(AL), 35045\",\n            \"price\": \"50.00\",\n            \"attendee_limit\": 100,\n            \"starts_at\": \"2023-04-30 12:00:00\",\n            \"ends_at\": \"2023-05-01 15:00:00\",\n            \"reservation_starts_at\": \"2023-04-01 12:00:00\",\n            \"reservation_ends_at\": \"2023-04-20 12:00:00\",\n            \"created_at\": \"2023-04-30T16:50:15.000000Z\",\n            \"updated_at\": \"2023-04-30T16:50:15.000000Z\"\n        },\n        {\n            \"uuid\": \"990e731b-1e60-4495-a4e0-41c45fa5a919\",\n            \"user_uuid\": \"fb8522ba-fe34-358d-8a8d-9ffb612125d7\",\n            \"title\": \"Sample Title\",\n            \"description\": \"Sunt velit repellendus distinctio fuga. Consequatur omnis pariatur tenetur cumque quae. Eaque aut repellat rem mollitia est asperiores. Neque earum debitis eius.\",\n            \"location\": \"700 8th St Clanton, Alabama(AL), 35045\",\n            \"price\": \"50.00\",\n            \"attendee_limit\": 100,\n            \"starts_at\": \"2023-04-30 12:00:00\",\n            \"ends_at\": \"2023-05-01 15:00:00\",\n            \"reservation_starts_at\": \"2023-04-01 12:00:00\",\n            \"reservation_ends_at\": \"2023-04-20 12:00:00\",\n            \"created_at\": \"2023-04-30T16:49:57.000000Z\",\n            \"updated_at\": \"2023-04-30T16:49:57.000000Z\"\n        },\n        {\n            \"uuid\": \"00e6c4d4-e368-324d-b35c-eefc4124b568\",\n            \"user_uuid\": \"d82911ac-10cd-316f-95be-1b296d422613\",\n            \"title\": \"Non nihil ad at pariatur tempore at sunt.\",\n            \"description\": \"Cum corrupti aperiam numquam doloribus qui dicta. Expedita eius corporis dolor quia. Eum itaque quas vel doloremque quam officia qui suscipit. Qui labore velit quod et. Saepe ea doloribus deserunt laborum et dolorum. Asperiores odit in ut et dolore. Mollitia velit aliquam nisi qui. Odit provident velit assumenda ipsa qui cupiditate. Quia quos cum assumenda inventore. Officia porro quasi debitis nemo accusantium numquam quam quaerat. Nam reiciendis dignissimos dicta laborum consequuntur. Nostrum praesentium fugit ut rerum. Quia necessitatibus autem fuga tempore id in libero. Voluptatum et officia illo est. Occaecati deserunt commodi consequuntur error quam aliquid. Consequuntur delectus placeat temporibus laudantium. Amet quaerat sed voluptatem culpa aut neque. Ut qui incidunt officiis quas. Quasi excepturi vel quasi voluptates. Consequatur quibusdam dolores laborum quis harum nulla recusandae. Et qui eos accusantium. Magnam recusandae iste molestias minima quo voluptas blanditiis. Vel veritatis sed nemo.\",\n            \"location\": \"21574 Hilpert Harbors\\nVictoriahaven, MO 99717-3117\",\n            \"price\": \"3.27\",\n            \"attendee_limit\": 1353394645,\n            \"starts_at\": \"2023-05-02 17:58:56\",\n            \"ends_at\": \"2023-05-11 06:38:13\",\n            \"reservation_starts_at\": \"2023-02-03 05:09:46\",\n            \"reservation_ends_at\": \"2023-04-28 16:23:22\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"295f1115-09b3-3214-993d-2833e4cdb4d7\",\n            \"user_uuid\": \"d82911ac-10cd-316f-95be-1b296d422613\",\n            \"title\": \"Occaecati dolores animi velit non ut qui doloremque.\",\n            \"description\": \"Magni explicabo labore similique aliquid. Odit praesentium nesciunt itaque qui culpa consectetur quis. Est voluptas cum reiciendis nisi quas at blanditiis eos. Dignissimos aspernatur earum sit rerum. Impedit accusamus aspernatur magnam quia aspernatur. Dolore ipsum est et qui quo quis. Qui id ipsum et nulla itaque distinctio iure. Ea ut voluptatibus quo aspernatur culpa. Voluptatem distinctio aliquam blanditiis fuga cupiditate recusandae omnis. Nesciunt blanditiis est delectus quia repellat. Est libero esse veritatis consequuntur ipsam qui. Nesciunt quo magni sequi voluptas ab. Reprehenderit quis nihil ducimus optio quaerat laboriosam nisi et. Sit eveniet nemo omnis sint. Dignissimos asperiores quidem aut magnam similique. Quibusdam non vitae ea non totam quibusdam est ipsam. Delectus adipisci sint labore quas animi at temporibus. Delectus aut rerum optio. Dignissimos totam qui odio velit id. Sequi molestiae eveniet repellendus iusto. Fugit nostrum omnis ut in nihil. Impedit error blanditiis quis qui. Voluptas sed sit minus id officia voluptates non. Quo velit ipsa nobis magni ratione totam. Quisquam expedita dolor architecto id. Omnis ea quia eum ipsum numquam sed. Et sit laborum vero commodi. Laborum quas nesciunt fugiat blanditiis est dolorem. Et non et id numquam enim dolores qui. Eveniet voluptas aut asperiores consequatur nihil. Earum explicabo vel vel rerum. Tempora adipisci dolor voluptatem. Amet officiis et reiciendis quo blanditiis culpa enim. Est ipsa facilis voluptatem qui eligendi. Accusantium velit soluta numquam voluptatem qui. Laborum officia qui eos modi est. Numquam explicabo neque ut sint voluptatum minima rerum eligendi. Rerum modi ad eum soluta autem voluptatem a. Nulla aut velit sit magnam porro maxime fugiat. Quia incidunt est porro nihil accusamus eos. Animi ducimus ratione possimus aspernatur placeat. Pariatur possimus eveniet dolor aliquid enim.\",\n            \"location\": \"720 Yundt Via\\nHansenview, NM 92939-4831\",\n            \"price\": \"5.18\",\n            \"attendee_limit\": null,\n            \"starts_at\": \"2023-04-01 07:39:18\",\n            \"ends_at\": \"2023-07-24 10:27:04\",\n            \"reservation_starts_at\": \"2023-02-28 03:27:13\",\n            \"reservation_ends_at\": \"2023-03-09 11:58:29\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"27af5be9-1b54-3c5d-8e5b-fbda2b11ccd7\",\n            \"user_uuid\": \"e1bab718-de5c-3b05-8174-59c531446a29\",\n            \"title\": \"Voluptatem esse nisi nihil optio amet.\",\n            \"description\": \"Quis quos debitis deserunt quia nisi in autem vitae. Dicta corporis sunt ea perferendis voluptates qui est. Sed magni natus doloremque. Tempora consequatur reprehenderit et quidem tempora distinctio voluptas. Quibusdam ipsa excepturi sed a suscipit beatae. Recusandae amet excepturi incidunt sit voluptas qui ipsam. Corrupti facere eius ullam quis delectus nam. Omnis soluta possimus voluptate repellat. Sed incidunt vel ut perspiciatis molestiae qui autem. Error cumque id doloribus ad veniam at quis accusantium. Enim hic in eum pariatur quod nisi iure. Quam nam rerum exercitationem nesciunt numquam. Qui nobis alias dolore fugiat et dolores asperiores dolorem. Ut deleniti vitae dolor eveniet totam sunt vel. Nihil inventore ut praesentium. Ducimus a esse magni dicta. Ipsum optio ut reiciendis illum facilis. Eligendi ea et neque at soluta. Eius quibusdam magni doloremque enim aliquam perspiciatis. Sunt minima et veritatis excepturi repellendus omnis hic tempora. Expedita ullam nemo a sapiente repellendus et corporis deserunt. Facilis cumque ut quia natus voluptatem eaque. Eaque occaecati quam quidem deleniti illo odio. Vel quis asperiores minima facilis architecto quia beatae. Dolore laborum neque saepe sit quia illum eos. Doloremque sint maxime beatae temporibus. Repudiandae laudantium iste odio expedita dolores ut. Velit recusandae laborum sequi. Mollitia iusto repellendus doloribus eum doloribus rem laboriosam. Aut debitis rerum praesentium et modi soluta. Aliquid voluptatem autem aut sunt. Enim aspernatur amet iusto et nostrum. Numquam dolore est velit nostrum asperiores ex sed. Error culpa cumque ullam et. Qui nihil eveniet pariatur fuga.\",\n            \"location\": \"9871 Friesen Glen Apt. 079\\nEast Alyshatown, WV 17748-5440\",\n            \"price\": \"6.18\",\n            \"attendee_limit\": 1073867954,\n            \"starts_at\": \"2023-03-04 23:37:55\",\n            \"ends_at\": \"2023-06-06 14:02:21\",\n            \"reservation_starts_at\": \"2023-03-02 03:30:58\",\n            \"reservation_ends_at\": \"2023-03-04 13:07:12\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"5913c63c-8b13-393f-b605-3e785b86fdd1\",\n            \"user_uuid\": \"6e6cd35a-de57-3191-84e1-9fa1fbafc69d\",\n            \"title\": \"Accusamus eos quod laborum repellendus quia ipsa culpa.\",\n            \"description\": \"Magni et est quod minima. Eum nihil quidem quibusdam quidem rem est laboriosam reprehenderit. Qui rem qui quia sequi ab quibusdam fuga. Et nemo voluptatem eum ut. Pariatur quia voluptate aut. Illum et beatae enim autem veniam autem tenetur. At qui tenetur officia. Omnis autem sunt tenetur omnis qui at et. Quis et dicta aut cumque quasi. Impedit aut dignissimos tenetur. Molestias dicta temporibus quisquam ab neque accusantium. Aut labore deleniti consequatur tempora. Voluptatem error odit quas deleniti ut. Non incidunt quas nisi est asperiores reiciendis perferendis. Est dolores vero inventore aut hic omnis error molestiae. Nihil accusamus vero nostrum et itaque praesentium quae. Quia et ut atque accusamus praesentium suscipit. Consequatur velit enim illum velit deserunt veniam cumque. Ullam id laborum reiciendis aliquam. Quos molestias ab amet non velit. Autem facere aliquam neque eaque. Dolor repellendus quis sed distinctio. Expedita id non ipsum atque illum rem. Unde architecto dignissimos minima dignissimos. Aut ut porro dolores accusantium blanditiis. Ut sint reiciendis eaque consequatur repellat perspiciatis. Minima qui dolor tempora rem tempora cumque et. Cumque at est voluptatem sunt nulla voluptatibus. Animi omnis eligendi eaque porro reprehenderit voluptatum dolorem. Neque optio officia voluptatem repudiandae veritatis explicabo quis. Necessitatibus laudantium et eaque est. Doloribus cumque velit minus consequuntur est quae. Veritatis vero et repudiandae vero delectus minima. Repudiandae natus quia aliquam quidem odio aut laboriosam. Neque quisquam tempora ut enim quis. Qui fuga eum perspiciatis. Et aut eum et similique.\",\n            \"location\": \"4111 Durgan Parks\\nLake Rashadview, MD 61317\",\n            \"price\": \"4.05\",\n            \"attendee_limit\": null,\n            \"starts_at\": \"2023-07-17 03:25:39\",\n            \"ends_at\": \"2023-07-22 11:57:26\",\n            \"reservation_starts_at\": \"2023-05-09 07:49:01\",\n            \"reservation_ends_at\": \"2023-05-11 16:46:09\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"256839ad-c116-3bd2-9df3-fbbb870967fd\",\n            \"user_uuid\": \"03bdc2f6-13c8-38b0-8cf6-ee42d38c1c15\",\n            \"title\": \"Perspiciatis deleniti accusamus ducimus odio voluptatem blanditiis provident fugit.\",\n            \"description\": \"Velit itaque aut mollitia molestiae ipsam unde. Consequuntur aut quam voluptatem mollitia provident magnam neque laboriosam. Enim perspiciatis assumenda consequatur. Voluptate porro eligendi tempore incidunt. Et reiciendis maxime quo. Eligendi et eos sed eligendi voluptatem dolor eos aut. Ipsum quia corrupti deleniti voluptas sunt earum vel. Vel eligendi odit facilis et culpa. Et a dolor blanditiis adipisci voluptatem ullam. Et accusantium quod animi excepturi veritatis rerum aut. Necessitatibus adipisci illum asperiores. Quibusdam cupiditate ad qui commodi. Asperiores distinctio fugiat amet beatae voluptas eum quaerat atque. Voluptatem illo distinctio aut perspiciatis impedit voluptas. Quis debitis amet enim exercitationem repellat. Laudantium eveniet et qui nobis ex qui enim. Consequatur dolorem doloremque est quia tempora non quibusdam quibusdam. Harum ullam voluptatem vitae at. Odio quas et cum. Veniam repudiandae at officiis assumenda non. Cupiditate veniam dolor voluptate necessitatibus. Nam sapiente itaque id facere sit voluptatem. Nostrum earum culpa nesciunt aut unde sequi natus. Fuga debitis earum laudantium tempora. Error quo est qui et rem corrupti unde iste. Minima perferendis eveniet consequatur architecto dolor. Praesentium repellendus aut sunt et quod qui adipisci. Voluptatum illo non qui aliquam ducimus rerum et sed. Voluptas voluptatum ad et maxime voluptas rerum dignissimos est. Voluptatem nam omnis nesciunt ullam vero. Iste a provident eum eligendi. Dolore autem et consequatur. Nisi repellendus distinctio et voluptas facere. Delectus animi non veritatis et dolor. Est fuga iste veritatis ut. Consectetur harum soluta repellat consequatur doloribus rerum. Tempore eaque ducimus dolor. Ea consequuntur illo reprehenderit. Voluptatibus sunt unde velit sunt molestiae. Quos aut voluptas aut rem esse. Omnis voluptatem voluptas qui qui voluptatem labore placeat. Est in eaque eveniet voluptas. Iusto incidunt vitae omnis neque ipsum aliquam. Minima aliquid voluptas blanditiis quae. Quidem aut architecto a rerum explicabo explicabo similique aut. Neque ut voluptas porro repudiandae doloremque inventore suscipit. Quia qui dolor unde aut dolore illo omnis consequatur. Est dolores temporibus dolor amet veniam illum velit quia. Est itaque unde libero fugit non soluta. Unde velit explicabo rerum optio ut. Delectus sequi reiciendis rem eum aut itaque. At ea perspiciatis nihil sit aut quia enim magni. Cumque sunt iste error laudantium veniam. Et beatae veritatis commodi et in. Totam architecto consequuntur dolorum incidunt accusamus ut. Sunt eum itaque ea libero. Magni quos nihil voluptas ut molestiae maiores. Ipsa officia rerum sit nostrum soluta inventore et. Reprehenderit praesentium ea qui voluptas. Aut unde illum aperiam id. Incidunt ipsum repellendus rem consequatur voluptatem quo est. Et rerum vel est dolorem velit vitae eius. Omnis voluptatem blanditiis dolor velit assumenda. Et omnis inventore rerum odio labore sapiente eius. Aliquid qui eum deserunt voluptate est eligendi. Aliquam pariatur rem rem modi et labore veritatis tempora. At qui placeat cum voluptatem aliquam impedit sit. Delectus aliquid dolor sit eius maxime nulla. Non aperiam inventore ducimus vero culpa temporibus. Magnam quidem temporibus repudiandae cumque temporibus optio soluta. Est dolorum veritatis itaque ipsum. Et doloribus sint corrupti sit non. Cupiditate voluptatum maiores id cupiditate. Quisquam laboriosam voluptatum quibusdam ut iusto. Culpa porro earum recusandae facere consequatur non. Ratione fuga cumque eveniet magni maxime consequatur. Ipsum inventore voluptatem qui repellat unde qui. Quis in corporis nihil iure perspiciatis consectetur dolorem. Incidunt beatae ducimus consequatur est velit. Architecto perspiciatis aliquid hic. Et illo et aut impedit temporibus ratione dolor incidunt. Quam culpa nesciunt ut odit. Laudantium deserunt sunt excepturi dolorem qui dolores et adipisci. Sed tempore qui rerum necessitatibus et id.\",\n            \"location\": \"64304 Bradly Turnpike Suite 374\\nOthatown, MT 20184-0332\",\n            \"price\": \"3.03\",\n            \"attendee_limit\": null,\n            \"starts_at\": \"2023-07-27 15:49:15\",\n            \"ends_at\": \"2023-07-27 23:05:51\",\n            \"reservation_starts_at\": \"2023-03-25 20:26:59\",\n            \"reservation_ends_at\": \"2023-05-21 02:11:49\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"61d4bdc9-128a-3fe8-bdac-661a551df6a4\",\n            \"user_uuid\": \"de3444ba-a970-3b4e-b860-dc30dad50213\",\n            \"title\": \"Deleniti nobis est blanditiis exercitationem quasi saepe quibusdam.\",\n            \"description\": \"Maxime reiciendis maxime perspiciatis voluptate. Perspiciatis ullam omnis voluptatem corporis harum est. Placeat a aut minus. Et ex et laboriosam repudiandae fuga odio est. Suscipit natus ratione dignissimos expedita nesciunt voluptatem exercitationem ea. Iure repellendus ea nisi odit non minima quos dolores. Pariatur quibusdam aut dolores autem qui. Similique esse eius qui ut voluptatem sit. Sed dignissimos vel ut deleniti corrupti nostrum debitis. Molestias corporis et maiores dolor id ullam illum omnis. Architecto eum voluptatem temporibus recusandae natus qui ullam. Possimus nihil reprehenderit inventore voluptatem sunt provident nemo occaecati. Reiciendis illum eaque qui illo. Et et magnam deserunt aut itaque quis ipsam incidunt. Voluptatem et architecto voluptates sed voluptatem. Qui sit et architecto. At qui totam perferendis esse. Nostrum ut quas mollitia similique consequuntur ut officia. Et qui eum voluptatum dolore. Cupiditate quos alias ducimus velit mollitia sed. Praesentium facere dolorem consequatur impedit animi magni earum. Consectetur illo eum voluptatem fugit. Praesentium soluta eos repudiandae praesentium dignissimos expedita eos corrupti. Beatae fugit est temporibus nobis similique nihil. Quas eius laborum iure ipsum accusantium adipisci. Quidem fugit rerum ullam culpa voluptas. Mollitia veniam nam aut. Eum possimus laboriosam inventore consequuntur. Voluptatem porro est voluptas.\",\n            \"location\": \"1082 Herman Walk Suite 801\\nWest Aurorefurt, IN 45834-4870\",\n            \"price\": \"7.82\",\n            \"attendee_limit\": null,\n            \"starts_at\": \"2023-03-27 04:05:19\",\n            \"ends_at\": \"2023-06-10 21:53:59\",\n            \"reservation_starts_at\": \"2023-02-15 20:46:46\",\n            \"reservation_ends_at\": \"2023-03-16 08:59:08\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"3481fb41-d55f-3c8a-b21a-763c3a40c103\",\n            \"user_uuid\": \"7054ebcf-8cee-3a8c-ae2e-30bec1e6b4f8\",\n            \"title\": \"Nam praesentium exercitationem consequatur accusantium dolorem.\",\n            \"description\": \"Ea inventore ullam quia quia qui porro repudiandae. Repellat velit numquam qui corrupti iusto minima. Temporibus ratione et eos est. Minus et esse non distinctio voluptas facilis in in. Dolores ducimus sit quis natus at. Magni illum cumque repudiandae quo vitae distinctio. Possimus iste non voluptatum molestiae. Ipsam et quis consequatur consequatur debitis voluptas. Amet tempora hic voluptatem. Voluptates maiores et labore. Non iure quasi quis voluptas repellendus. Voluptatem architecto et ipsum voluptatem numquam necessitatibus laudantium. Minima voluptatum ipsa et unde quis architecto fuga. Dolorem voluptas nobis molestiae facere ut eius. Odit dolores ratione voluptas molestiae voluptatum. Voluptatibus cum nam ut sapiente. Magnam quibusdam quam aliquid voluptatem perferendis quia. Explicabo iusto expedita repellendus qui et. Tempore molestias id reprehenderit libero. Ut quo consequatur rerum aut quisquam. Sit magnam consequatur in rem ut quisquam sint. Omnis aut porro et. Illum sunt culpa facilis totam. Doloribus nemo quia eos et. Totam ipsa et velit pariatur fugiat quos. Unde ipsum dolores incidunt illo sed et quam. Voluptatem quam cum iste quo. Quia voluptatem aut impedit. Aut doloribus natus facilis qui. Ex nulla qui tempora magni esse sit rerum. Recusandae ut fugiat sit voluptatem incidunt. Fugiat quia cumque voluptate rerum. Beatae sequi doloremque laborum. Sequi incidunt sint sed enim et. Magni similique rerum aut et fugiat. Dolores officia et ut natus porro id minima ex. Rerum aliquam est voluptate laboriosam. Ut ex praesentium aperiam. Iusto quos aliquid cum exercitationem occaecati placeat quibusdam. Non dicta et eos rem cupiditate minus nam. Quia aut cum omnis aliquid sunt ut. Magnam atque laudantium minima omnis dolore. Dolor natus qui perspiciatis qui. Nobis vel autem dicta dolores totam officiis. Non minima ab ab deleniti voluptate aut. Rerum aut iste assumenda consequatur. Voluptatem alias est aut commodi voluptas eos. Velit nesciunt necessitatibus culpa in quia reprehenderit maiores. Necessitatibus tempore quae atque sapiente voluptatem. Ratione velit sed illo repellendus. Laudantium itaque velit excepturi. Odio ratione qui cupiditate et distinctio autem saepe. Ratione non temporibus aut exercitationem sapiente dignissimos. Fuga nihil voluptates vel voluptatum consequatur. Rem voluptatem voluptate et aliquam ut ut. Perspiciatis quia esse iusto aut repellat. Reprehenderit placeat modi eos et. Eveniet quis inventore qui fugit. Delectus iusto quod alias dignissimos sint. Illum optio occaecati qui placeat dolorem. Ducimus soluta quos eaque eum reiciendis et doloremque. Sunt et quis vitae aliquid placeat nisi doloribus. Aut vel quia repellat et exercitationem perspiciatis perferendis. Quaerat adipisci dignissimos quia cum qui quo nemo. Et ut facere laborum est qui. Quo omnis cum consequuntur mollitia sapiente et vero facilis. Nihil optio esse exercitationem. Natus est sit doloremque laudantium explicabo possimus pariatur. Libero consequatur ea molestias dolorem illo at. Harum et maxime unde repudiandae quasi. Voluptatem et labore sunt molestiae est. Quaerat aut nesciunt similique est ipsam.\",\n            \"location\": \"7250 Howell Passage\\nPort Desmond, NE 26267\",\n            \"price\": \"2.51\",\n            \"attendee_limit\": 1280540807,\n            \"starts_at\": \"2023-07-12 21:17:47\",\n            \"ends_at\": \"2023-07-17 14:45:01\",\n            \"reservation_starts_at\": \"2023-05-03 21:07:11\",\n            \"reservation_ends_at\": \"2023-07-07 17:07:19\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"15fadf7c-fdde-3919-8822-19417854f16e\",\n            \"user_uuid\": \"d82911ac-10cd-316f-95be-1b296d422613\",\n            \"title\": \"Facere eius laborum id eum quaerat perferendis iure error.\",\n            \"description\": \"Atque ipsam aperiam dolorem illo aut. Ipsam soluta quidem rem omnis. Nostrum quaerat repellendus voluptate. Esse quas molestiae qui et veritatis aperiam harum earum. Tenetur fugiat sit perspiciatis iste soluta. Libero unde officiis culpa dolores eum accusantium. Sed ducimus numquam ex. Eaque est maxime consequatur. Corrupti rerum molestiae exercitationem illum soluta.\",\n            \"location\": \"166 Wilkinson Pine Apt. 416\\nLake Aglaemouth, ME 10694\",\n            \"price\": \"3.47\",\n            \"attendee_limit\": 1189672144,\n            \"starts_at\": \"2023-02-15 21:02:48\",\n            \"ends_at\": \"2023-07-05 08:13:10\",\n            \"reservation_starts_at\": \"2023-02-05 11:10:58\",\n            \"reservation_ends_at\": \"2023-02-12 09:12:12\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"ce6eb93d-7ccd-395d-82b1-e7ea5a5e2709\",\n            \"user_uuid\": \"de3444ba-a970-3b4e-b860-dc30dad50213\",\n            \"title\": \"Quae repudiandae ipsam fugit quaerat unde sed qui.\",\n            \"description\": \"Illum repellendus sunt velit voluptatem. Ut cum nesciunt et eveniet officiis odit. Consequatur pariatur ut ut. Qui ducimus blanditiis illum temporibus molestiae et laudantium. Et earum nobis cum ut qui nemo deserunt. Quibusdam sed totam deserunt dolorum odit non aut. Consequatur ipsum id facere eos nemo provident est. Voluptates hic nostrum consequatur omnis vero ut cumque. Voluptate voluptatibus exercitationem vel dolores voluptatem quam dolorum. In voluptatem saepe quia quibusdam dolores autem tempora. Recusandae deleniti et aspernatur voluptates. Sed et perspiciatis dolorem quidem facilis harum voluptatem. Sunt est excepturi et blanditiis optio aliquam. Blanditiis corrupti deleniti ut. Impedit nulla ut amet porro animi placeat et. Consequatur veniam cumque soluta dignissimos. Sed possimus voluptatem et sapiente et. Deleniti fuga debitis id praesentium consequatur praesentium at. Sequi eaque architecto rerum eveniet necessitatibus quia temporibus omnis. Fugiat eos et deserunt officiis et et temporibus ducimus. Expedita repellat quisquam aut at. Voluptatem facilis eveniet dolor velit est non facere quibusdam. Dolores dolorum maxime aperiam sit dolore nam rerum. Ducimus veritatis aut sed cumque qui ad. Atque qui illum minima accusantium. Eius vel ea tempora. Quos rerum eum dicta temporibus perferendis error sit. Corporis consectetur tempora commodi perferendis debitis. Accusantium repudiandae optio architecto ipsam. Cupiditate magni perferendis veniam animi fugit nam eum. Rerum ad fuga libero saepe. Omnis maxime est et voluptatibus quaerat maxime ullam tempora. Facilis odio et voluptas vero corrupti aspernatur. Ab odit qui porro cum. Aut et enim perferendis nisi quia in a ad.\",\n            \"location\": \"922 Orn Forge Apt. 833\\nNew Alysabury, TX 63976-6975\",\n            \"price\": \"4.96\",\n            \"attendee_limit\": null,\n            \"starts_at\": \"2023-02-14 16:19:05\",\n            \"ends_at\": \"2023-04-26 13:39:58\",\n            \"reservation_starts_at\": \"2023-02-06 14:05:52\",\n            \"reservation_ends_at\": \"2023-02-11 10:48:45\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"06c4644b-39c9-3331-9f7f-9d27e107f7e6\",\n            \"user_uuid\": \"6e6cd35a-de57-3191-84e1-9fa1fbafc69d\",\n            \"title\": \"Aut ipsum voluptates eos modi aperiam qui.\",\n            \"description\": \"Sequi quia officia suscipit molestias provident sunt. Maiores dignissimos eos velit consectetur. Ut laudantium et adipisci beatae itaque sequi quod. Nihil atque rerum et velit deleniti in iure recusandae. Voluptates neque nisi libero optio dicta. Sit veniam praesentium temporibus deleniti harum. Sit vel at vel consequatur similique pariatur. Neque numquam voluptas delectus. Itaque vero harum enim dolor quidem cumque illo assumenda. Iste autem et hic sunt voluptas qui sint. Ducimus ab reprehenderit qui pariatur omnis quae nostrum quia. Reprehenderit ipsum laudantium consequatur omnis. Tempore consequuntur cupiditate repellat itaque occaecati neque. Adipisci dignissimos veritatis placeat vitae ut corporis ducimus. Repellendus provident et magni illum sint. Aut soluta perspiciatis ipsa mollitia omnis et. Et voluptatem excepturi vel totam voluptas molestiae molestiae. Libero enim in nisi ipsa dolores modi. Facere reiciendis sit tenetur voluptatibus ipsam pariatur. Eligendi enim atque nihil magnam cupiditate hic est. A possimus tempora voluptates et ipsam corporis commodi laboriosam. Eum ut ut illum error illo et fuga ab. Quis aut aliquid error accusamus nobis. Sit in cumque ipsum quas iste suscipit ut. Sed eligendi distinctio saepe nulla molestiae neque. Quod fuga maxime atque et vel. Numquam cupiditate cumque eos vel eum minima nobis sed. Vitae soluta amet perspiciatis fugiat magnam officiis. Quidem autem fugit aut autem. Maiores consequatur numquam velit porro dicta iusto. Earum eveniet enim sed tempore sunt. Nihil et et laboriosam dolores similique. Blanditiis in mollitia nostrum. Qui quidem facilis ut nulla velit nemo hic veniam. Velit ratione aut quam illo omnis aut ullam. Mollitia qui et sunt odit occaecati. Esse ipsa vel aliquid dignissimos tempore ex. Modi eligendi quae est aut. Impedit itaque sed quia deleniti. Vel consequatur explicabo laborum molestiae nam odio commodi quia. Nam sit odio unde quod et quia. Culpa asperiores dolore nisi mollitia. In laborum molestiae est similique. Occaecati quibusdam sapiente quae voluptas quibusdam consequatur quia. Dolores vel quidem omnis ut voluptatem. Non ad et esse saepe. Quo maxime cum eos recusandae consequatur. Pariatur id impedit magnam rerum aut. Omnis ea eligendi tenetur cupiditate. Eveniet maiores mollitia qui ut. Non animi et consequuntur laboriosam temporibus repudiandae voluptatem. Quam veniam reiciendis omnis illum aut sint rem.\",\n            \"location\": \"14144 Antone Tunnel Apt. 112\\nWest Quentin, VA 70801-4102\",\n            \"price\": \"7.97\",\n            \"attendee_limit\": null,\n            \"starts_at\": \"2023-02-08 06:41:00\",\n            \"ends_at\": \"2023-03-14 12:59:18\",\n            \"reservation_starts_at\": \"2023-02-05 05:00:08\",\n            \"reservation_ends_at\": \"2023-02-06 11:10:34\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"535f4ce9-107d-398f-aa3f-3b904ba33745\",\n            \"user_uuid\": \"a8644c47-7ba3-3bb2-9cf6-9a2b44712878\",\n            \"title\": \"Illum soluta facere maxime eos et autem odit.\",\n            \"description\": \"Sed maxime placeat dolorem sed rem aperiam vel et. Iusto esse aut magnam quis dolorum commodi. Voluptate id asperiores omnis odio itaque ea. Sapiente sint placeat ut voluptas quidem quasi repellat. Tenetur fugit quas sit voluptas recusandae rerum. Reiciendis natus et quos ut. Consequatur excepturi dolor non rerum aut cupiditate minus aliquam. Commodi tempora expedita eos nihil ut voluptatum quam. Et eveniet voluptatum ex consectetur nihil ratione.\",\n            \"location\": \"4875 Emard Mission Suite 092\\nVonland, IA 82188-4427\",\n            \"price\": \"4.28\",\n            \"attendee_limit\": null,\n            \"starts_at\": \"2023-07-22 10:00:10\",\n            \"ends_at\": \"2023-07-25 07:04:43\",\n            \"reservation_starts_at\": \"2023-07-02 22:25:55\",\n            \"reservation_ends_at\": \"2023-07-03 15:45:27\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        },\n        {\n            \"uuid\": \"f46d51e7-4f6b-32d5-a101-4b15fbe55492\",\n            \"user_uuid\": \"6e6cd35a-de57-3191-84e1-9fa1fbafc69d\",\n            \"title\": \"Corrupti dolorem iusto laborum natus ea repellendus eum.\",\n            \"description\": \"Eum dignissimos earum deserunt quia nobis voluptatem. Molestias saepe aut occaecati unde laboriosam omnis aliquid. Dolorem aut pariatur dolorem quia dolorum. Rem eligendi nihil explicabo qui vel. Nemo laudantium eos debitis consectetur. Architecto voluptates quibusdam expedita sequi ab mollitia. Nulla unde non veniam illum hic reprehenderit voluptas. Veniam asperiores quisquam nihil nemo recusandae architecto. Ratione voluptatem et in consequuntur ducimus ad eaque. Veniam perspiciatis recusandae autem et quod. Corrupti ipsam laudantium et fuga sed ipsa. Voluptatum amet odit omnis autem. Placeat possimus et voluptatem quia minus. Officia voluptatem facere sequi iusto eaque. Aut asperiores qui quia nisi fuga nobis vel. Nostrum autem porro asperiores pariatur quisquam et sint. Ut voluptas quo unde sed reprehenderit laboriosam est ut. Doloribus voluptate in excepturi sit culpa eum et. Dolore at voluptatem ullam quidem officia sed dolore. Deserunt ex sunt aperiam tempore. Cupiditate quidem id distinctio dolores eligendi qui ut. Voluptas modi ut temporibus sit. Consequatur animi magnam quasi aut. Dolor molestias et dolor harum. Qui et aut accusamus molestiae nobis. Sapiente et distinctio voluptas consequatur recusandae aut. Repudiandae qui dolore molestias ab. Aut quis voluptatibus ut laboriosam. Suscipit sunt non laudantium repudiandae eligendi rerum ab. Quia incidunt hic sed aspernatur et vero distinctio illum. Cumque necessitatibus distinctio rem fugit sed quia dolorem. Ut adipisci at deleniti rerum atque et quasi minima. Eaque perferendis est sed temporibus nulla libero iure et.\",\n            \"location\": \"5896 Pierre Summit Suite 170\\nSunnyton, ND 92083\",\n            \"price\": \"3.71\",\n            \"attendee_limit\": null,\n            \"starts_at\": \"2023-07-02 00:37:47\",\n            \"ends_at\": \"2023-07-05 04:26:56\",\n            \"reservation_starts_at\": \"2023-04-29 14:37:36\",\n            \"reservation_ends_at\": \"2023-05-07 02:21:21\",\n            \"created_at\": \"2023-04-30T16:47:44.000000Z\",\n            \"updated_at\": \"2023-04-30T16:47:44.000000Z\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://localhost/api/v1/events/list?page=1\",\n        \"last\": \"http://localhost/api/v1/events/list?page=2\",\n        \"prev\": null,\n        \"next\": \"http://localhost/api/v1/events/list?page=2\"\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 2,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost/api/v1/events/list?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": \"http://localhost/api/v1/events/list?page=2\",\n                \"label\": \"2\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost/api/v1/events/list?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://localhost/api/v1/events/list\",\n        \"per_page\": 15,\n        \"to\": 15,\n        \"total\": 23\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Sample Title\",\r\n    \"description\": \"Sunt velit repellendus distinctio fuga. Consequatur omnis pariatur tenetur cumque quae. Eaque aut repellat rem mollitia est asperiores. Neque earum debitis eius.\",\r\n    \"location\": \"700 8th St Clanton, Alabama(AL), 35045\",\r\n    \"price\": 50,\r\n    \"attendee_limit\": 100,\r\n    \"starts_at\": \"2023-04-30 12:00:00\",\r\n    \"ends_at\": \"2023-05-01 15:00:00\",\r\n    \"reservation_starts_at\": \"2023-04-01 12:00:00\",\r\n    \"reservation_ends_at\": \"2023-04-20 12:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "[201] Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Sample Title\",\r\n    \"description\": \"Sunt velit repellendus distinctio fuga. Consequatur omnis pariatur tenetur cumque quae. Eaque aut repellat rem mollitia est asperiores. Neque earum debitis eius.\",\r\n    \"location\": \"700 8th St Clanton, Alabama(AL), 35045\",\r\n    \"price\": 50,\r\n    \"attendee_limit\": 100,\r\n    \"starts_at\": \"2023-04-30 12:00:00\",\r\n    \"ends_at\": \"2023-05-01 15:00:00\",\r\n    \"reservation_starts_at\": \"2023-04-01 12:00:00\",\r\n    \"reservation_ends_at\": \"2023-04-20 12:00:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/events/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 30 Apr 2023 18:38:29 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"uuid\": \"990e99eb-f39f-4ca8-aa58-239b813ab81c\",\n        \"user_uuid\": \"fb8522ba-fe34-358d-8a8d-9ffb612125d7\",\n        \"title\": \"Sample Title\",\n        \"description\": \"Sunt velit repellendus distinctio fuga. Consequatur omnis pariatur tenetur cumque quae. Eaque aut repellat rem mollitia est asperiores. Neque earum debitis eius.\",\n        \"location\": \"700 8th St Clanton, Alabama(AL), 35045\",\n        \"price\": 50,\n        \"attendee_limit\": 100,\n        \"starts_at\": \"2023-04-30 12:00:00\",\n        \"ends_at\": \"2023-05-01 15:00:00\",\n        \"reservation_starts_at\": \"2023-04-01 12:00:00\",\n        \"reservation_ends_at\": \"2023-04-20 12:00:00\"\n    }\n}"
+						},
+						{
+							"name": "[422] Validation Errors",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\r\n//     \"title\": \"Sample Title\",\r\n//     \"description\": \"Sunt velit repellendus distinctio fuga. Consequatur omnis pariatur tenetur cumque quae. Eaque aut repellat rem mollitia est asperiores. Neque earum debitis eius.\",\r\n//     \"location\": \"700 8th St Clanton, Alabama(AL), 35045\",\r\n//     \"price\": 50,\r\n//     \"attendee_limit\": 100,\r\n//     \"starts_at\": \"2023-04-30 12:00:00\",\r\n//     \"ends_at\": \"2023-05-01 15:00:00\",\r\n//     \"reservation_starts_at\": \"2023-04-01 12:00:00\",\r\n//     \"reservation_ends_at\": \"2023-04-20 12:00:00\"\r\n// }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/events/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"create"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 30 Apr 2023 18:28:51 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The given data was invalid.\",\n    \"errors\": {\n        \"title\": [\n            \"The title field is required.\"\n        ],\n        \"description\": [\n            \"The description field is required.\"\n        ],\n        \"location\": [\n            \"The location field is required.\"\n        ],\n        \"price\": [\n            \"The price field is required.\"\n        ],\n        \"starts_at\": [\n            \"The starts at field is required.\"\n        ],\n        \"ends_at\": [\n            \"The ends at field is required.\"\n        ],\n        \"reservation_starts_at\": [\n            \"The reservation starts at field is required.\"\n        ],\n        \"reservation_ends_at\": [\n            \"The reservation ends at field is required.\"\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tickets",
+			"item": [
+				{
+					"name": "List Ticket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/tickets/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tickets",
+								"list"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "uuid",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "event_uuid",
+									"value": "8a547fdd-d472-3932-8b3a-a10b3119e94b",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Ticket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"event_uuid\": \"9df0afd2-1b17-3a65-b03a-302858ed42a9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/tickets/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tickets",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "[400] Not open for reservation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_uuid\": \"70fb7077-0c56-3ba0-9855-b23a74445bad\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/tickets/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tickets",
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 May 2023 10:04:47 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Not open for reservation.\"\n}"
+						},
+						{
+							"name": "[400] Already Reserved",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_uuid\": \"b47e01e5-dec1-3918-a5b7-c6181e3d5b57\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/tickets/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tickets",
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 May 2023 10:59:43 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "55"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"You are already reserved in this event.\"\n}"
+						},
+						{
+							"name": "[400] Cannot Create Ticket on Own Event",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_uuid\": \"8a547fdd-d472-3932-8b3a-a10b3119e94b\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/tickets/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tickets",
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.5"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 May 2023 11:35:35 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Cannot create ticket on own event.\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
