@@ -98,3 +98,5 @@ RUN apt-get update && \
     if [[ "${NODE_VERSION}" == "10" ]]; then npm install -g npm@^6.14; fi && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+RUN npm install

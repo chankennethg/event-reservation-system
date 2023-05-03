@@ -185,6 +185,15 @@ report-clean:
 wait-for-db:
 	@make exec cmd="php artisan db:wait"
 
+npm-install: ## Updates node dependencies
+	@make exec-bash cmd="npm install"
+
+npm-build: ## Build node package
+	@make exec-bash cmd="npm run build"
+
+npm-dev: ## Run node dev server
+	npm run dev
+
 composer-install-no-dev: ## Installs composer no-dev dependencies
 	@make exec-bash cmd="COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --no-dev"
 

@@ -22,7 +22,7 @@ class CreateTicketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'event_uuid' => 'required|string|exists:events,uuid'
+            'event_uuid' => 'required|string|exists:events,uuid',
         ];
     }
 }

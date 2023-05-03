@@ -38,7 +38,7 @@ class RegisterUserTest extends TestCase
                 'first_name',
                 'last_name',
                 'email',
-                'token'
+                'token',
                 'updated_at',
                 'created_at',
             ],

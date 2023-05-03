@@ -46,9 +46,12 @@ class EventController extends Controller
         $direction = $filters['direction'] ?? 'desc';
         $status = $filters['status'] ?? '';
 
+        /** @var User $user */
+        $user = Auth::user();
+
         $events = Event::withCount('tickets')
             ->filter($filters)
-            ->status($status)
+            ->status($status, $user->uuid)
             ->sort($sortBy, $direction)
             ->paginate($request->get('limit'));
 

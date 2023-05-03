@@ -28,7 +28,7 @@ class ListEventRequest extends FormRequest
             'limit' => 'integer',
             'title' => 'string',
             'description' => 'string',
-            'status' => 'string|in:inactive,reserve',
+            'status' => 'string|in:inactive,available,reserved',
         ];
     }
 }

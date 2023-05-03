@@ -36,8 +36,5 @@ class TicketSeeder extends Seeder
                 'event_uuid' => $event->uuid,
             ]);
         }
-
-
-        TicketFactory::new()->count(100)->create();
     }
 }

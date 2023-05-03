@@ -122,25 +122,30 @@ class Event extends Model implements ListableContract
     /**
      * Scope a query for event status
      *
-     * @param Builder<Event> $query
+     * @param Builder<Event> $query Builder
      * @param string $status inactive|reserve
+     * @param string $userUuid UUID of the user
      * @return void void
      */
-    public function scopeStatus(Builder $query, string $status): void
+    public function scopeStatus(Builder $query, string $status, string $userUuid): void
     {
         if ($status === 'inactive') {
             $query->inactive();
         }
 
-        if ($status === 'reserve') {
-            $query->reserve();
+        if ($status === 'available') {
+            $query->available($userUuid);
+        }
+
+        if ($status === 'reserved') {
+            $query->reserved($userUuid);
         }
     }
 
     /**
      * Scope a query for inactive events
      *
-     * @param Builder<Event> $query
+     * @param Builder<Event> $query Builder
      * @return void void
      */
     public function scopeInactive(Builder $query): void
@@ -149,14 +154,32 @@ class Event extends Model implements ListableContract
     }
 
     /**
-     * Scope a query for reservation events
+     * Scope a query for available reservation events
      *
-     * @param Builder<Event> $query
+     * @param Builder<Event> $query Builder
+     * @param string $userUuid UUID of the user
      * @return void void
      */
-    public function scopeReserve(Builder $query): void
+    public function scopeAvailable(Builder $query, string $userUuid): void
     {
         $query->where('reservation_starts_at', '<=', date('Y-m-d H:i:s'));
         $query->where('reservation_ends_at', '>=', date('Y-m-d H:i:s'));
+        $query->whereDoesntHave('tickets', function ($subquery) use ($userUuid): void {
+            $subquery->where('user_uuid', $userUuid);
+        });
+    }
+
+    /**
+     * Scope a query for available reservation events
+     *
+     * @param Builder<Event> $query Builder
+     * @param string $userUuid UUID of the user
+     * @return void void
+     */
+    public function scopeReserved(Builder $query, string $userUuid): void
+    {
+        $query->whereHas('tickets', function ($subquery) use ($userUuid): void {
+            $subquery->where('user_uuid', $userUuid);
+        });
     }
 }

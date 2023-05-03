@@ -48,7 +48,7 @@ const store = createStore({
     },
     getEvents({ commit }, {url = null} = {}) {
       commit('setEventsLoading', true)
-      url = url || "/events/list?status=reserve";
+      url = url || "/events/list?status=available";
       return axiosClient.get(url).then((res) => {
         commit('setEventsLoading', false)
         commit("setEvents", res.data);

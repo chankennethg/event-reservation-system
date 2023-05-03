@@ -22,7 +22,7 @@ class EventTest extends TestCase
 
 
     /**
-     * Test if user can list events
+     * Test if user can create events
      */
     public function test_user_can_create_events(): void
     {
@@ -60,7 +60,6 @@ class EventTest extends TestCase
                 'location',
                 'price',
                 'attendee_limit',
-                'ticket_count',
                 'starts_at',
                 'ends_at',
                 'reservation_starts_at',
@@ -71,7 +70,7 @@ class EventTest extends TestCase
 
 
     /**
-     * Test if user can list events
+     * Test if user can create events with missing fields
      */
     public function test_user_can_create_events_with_missing_fields(): void
     {
@@ -91,7 +90,7 @@ class EventTest extends TestCase
     }
 
     /**
-     * Test if user can list events
+     * Test if user can create events without auth
      */
     public function test_user_can_create_events_without_auth(): void
     {
@@ -145,7 +144,7 @@ class EventTest extends TestCase
                     'location',
                     'price',
                     'attendee_limit',
-                    'ticket_count',
+                    'created_ticket_count',
                     'starts_at',
                     'ends_at',
                     'reservation_starts_at',
