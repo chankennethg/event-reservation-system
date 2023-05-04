@@ -148,7 +148,7 @@ class TicketTest extends TestCase
         ]);
     }
 
-        /**
+    /**
      * Test if user cannot create a duplicate ticket
      */
     public function test_user_cannot_create_ticket_on_own_event(): void
@@ -183,6 +183,52 @@ class TicketTest extends TestCase
         $response->assertStatus(400)
         ->assertJsonFragment([
             'message' => 'Cannot create ticket on own event.'
+        ]);
+    }
+
+    /**
+     * Test if user cannot create a ticket on sold out event
+     */
+    public function test_user_cannot_create_ticket_on_full_event(): void
+    {
+        /** @var User $newUser */
+        $newUser = User::factory()->create();
+        $dateFormat = 'Y-m-d H:i:s';
+        $startsAt = fake()->dateTimeBetween('+7 days', '+8 days')->format($dateFormat);
+        $endsAt = fake()->dateTimeBetween($startsAt, '+10 days')->format($dateFormat);
+        $reservationStartsAt = fake()->dateTimeBetween('-2 months', '-3 days')->format($dateFormat);
+        $reservationEndsAt = fake()->dateTimeBetween('tomorrow', $startsAt)->format($dateFormat);
+
+
+        /** @var Event $event */
+        $event = Event::factory()->create([
+            'starts_at' => $startsAt,
+            'user_uuid' => $newUser->uuid,
+            'ends_at' => $endsAt,
+            'attendee_limit' => 3,
+            'reservation_starts_at' => $reservationStartsAt,
+            'reservation_ends_at' => $reservationEndsAt,
+        ]);
+
+        // Create 3 tickets on the event
+        Ticket::factory()->count(3)->create([
+            'event_uuid' => $event->uuid,
+        ]);
+
+        // Act as a new user #2
+        /** @var User $newUser2 */
+        $newUser2 = User::factory()->create();
+        Sanctum::actingAs($newUser2);
+
+        $payload = [
+            'event_uuid' => $event->uuid,
+        ];
+
+        $response = $this->post($this->apiUrl . '/create', $payload);
+
+        $response->assertStatus(400)
+        ->assertJsonFragment([
+            'message' => 'No available slots.'
         ]);
     }
 }

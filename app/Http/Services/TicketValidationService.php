@@ -63,7 +63,7 @@ class TicketValidationService
      */
     private function isSlotAvailable(): bool
     {
-        if ($this->event->tickets()->count() <= $this->event->attendee_limit
+        if ($this->event->tickets()->count() < $this->event->attendee_limit
             || $this->event->attendee_limit === null) {
             return true;
         }

@@ -155,6 +155,7 @@ class Event extends Model implements ListableContract
 
     /**
      * Scope a query for available reservation events
+     * Condition: Reservation Date is ongoing && User didn't reserve ticket on that event
      *
      * @param Builder<Event> $query Builder
      * @param string $userUuid UUID of the user
