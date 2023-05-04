@@ -122,7 +122,7 @@ restart-staging: stop-staging start-staging ## Stop and start staging environmen
 restart-prod: stop-prod start-prod ## Stop and start prod environment
 
 env-dev: ## Creates config for dev environment
-	@make exec cmd="cp ./.env.dev ./.env"
+	cp ./.env.dev ./.env
 
 env-test-ci: ## Creates config for test/ci environment
 	@make exec cmd="cp ./.env.test-ci ./.env"
